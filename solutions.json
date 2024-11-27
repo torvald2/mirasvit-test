@@ -1,0 +1,98 @@
+[
+    {
+        "solution": 3,
+        "data": [
+            {
+                "school": true,
+                "gym":    false,
+                "store":  false
+            },
+            {
+                "school": false,
+                "gym":    true,
+                "store":  false
+            },
+            {
+                "school": true,
+                "gym":    true,
+                "store":  false
+            },
+            { 
+                "school": true,
+                "gym":    false,
+                "store":  false
+            },
+            {
+                "school": true,
+                "gym":    false,
+                "store":  true
+            }
+        ]
+    },
+    {
+        "solution": 2,
+        "data": [
+            {
+                "school": true,
+                "gym":    false
+            },
+            {
+                "school": false,
+                "gym":    true
+            },
+            {
+                "school": true,
+                "gym":    true
+            },
+            { 
+                "school": false,
+                "gym":    false
+            },
+            {
+                "school": true,
+                "gym":    false
+            }
+        ]
+    },
+    {
+        "solution": 0,
+        "data": [
+            {
+                "school": true
+            },
+            {
+                "school": false
+            }
+        ]
+    },
+    {
+        "solution": 0,
+        "data": [
+            {
+                "school": true,
+                "gym":    false,
+                "store":  false
+            },
+            {
+                "school": false,
+                "gym":    true,
+                "store":  false
+            },
+            {
+                "school": true,
+                "gym":    false,
+                "store":  false
+            },
+            { 
+                "school": true,
+                "gym":    false,
+                "store":  false
+            },
+            {
+                "school": true,
+                "gym":    false,
+                "store":  false
+            }
+        ]
+    }
+]
