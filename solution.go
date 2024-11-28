@@ -12,7 +12,8 @@ import (
 func FindSolution(blocks []map[string]bool) (bestBlockId int) {
 
 	//Перевіряємо чи масив не пустий Якщо пустий повертаємо 0
-	if len(blocks) == 0 {
+	blockLen := len(blocks)
+	if blockLen == 0 {
 		return
 	}
 	//Створюємо мапу з данних першого елементу масива з максимально можливим капасіті
@@ -24,42 +25,44 @@ func FindSolution(blocks []map[string]bool) (bestBlockId int) {
 			blockTable[k] = append(blockTable[k], 0)
 		}
 	}
+
 	// Розкладуємо інщі об'єкти у створену мапу
-	for i := 1; i < len(blocks); i++ {
-		for k, _ := range blockTable {
+	for i := 1; i < blockLen; i++ {
+		for k := range blockTable {
 			if blocks[i][k] {
 				blockTable[k] = append(blockTable[k], i)
 			}
 		}
 	}
 
-	// Створюємо ідеальний вектор наближення до якого будемо рахувати (ідеальний вектор це вектор з нулями)
 	dimentions := len(blockTable)
-	basicVec := make([]int, dimentions)
 
 	// Проходимо у циклі усі блоки, створюємо вектор відстаней по кожному параметру і зрівнюємо з basic
-
+	//ssfdsf
 	bestIndex := -1
 	bestDistance := math.MaxInt
+	thisVec := make([]int, dimentions)
 
 	for i := 0; i < len(blocks); i++ {
-		thisVec := make([]int, 0, dimentions)
+		for i := 0; i < dimentions; i++ {
+			thisVec[i] = 0
+		}
+		idx := 0
+		minDist := math.MaxInt
 		for k, v := range blockTable {
-			minDist := math.MaxInt
-			if blocks[i][k] {
-				thisVec = append(thisVec, 0)
-			} else {
+			minDist = math.MaxInt
+			if !blocks[i][k] {
 				for _, x := range v {
 					dist := AbsInt(x - i)
 					if dist < minDist {
 						minDist = dist
 					}
 				}
-				thisVec = append(thisVec, minDist)
-
+				thisVec[idx] = minDist
 			}
+			idx++
 		}
-		dist := GetSquaredDistance(thisVec, basicVec, dimentions)
+		dist := GetSquaredLength(thisVec)
 		if dist < bestDistance {
 			bestIndex = i
 			bestDistance = dist
@@ -71,13 +74,12 @@ func FindSolution(blocks []map[string]bool) (bestBlockId int) {
 
 }
 
-// Евклідова відстань між векторами
-func GetSquaredDistance(vec1, vec2 []int, dimensions int) int {
+// Обчислюємо просто квадрат відстані замість порівняння векторів
 
+func GetSquaredLength(vec []int) int {
 	var sum int
-	for i := 0; i < dimensions; i++ {
-		diff := vec1[i] - vec2[i]
-		sum += diff * diff
+	for _, val := range vec {
+		sum += val * val
 	}
 	return sum
 }

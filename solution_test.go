@@ -12,7 +12,7 @@ type Tests []struct {
 }
 
 func TestSolution(t *testing.T) {
-
+	//55
 	payload, err := ioutil.ReadFile("solutions.json")
 	if err != nil {
 		t.Fatal(err)
@@ -66,3 +66,7 @@ func BenchmarkSolution(b *testing.B) {
 		FindSolution(blocks)
 	}
 }
+
+//BenchmarkSolution-8   	 1267094	       918.5 ns/op	     288 B/op	       9 allocs/op Start
+//BenchmarkSolution-8   	 1326927	       893.9 ns/op	     264 B/op	       8 allocs/op Iter 1
+//BenchmarkSolution-8   	 1409508	       804.9 ns/op	     168 B/op	       4 allocs/op
